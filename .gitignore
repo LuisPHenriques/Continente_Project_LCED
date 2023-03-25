@@ -1,3 +1,7 @@
 
 credentials.py
 _pycache_
+AAI_dim_customer.csv
+AAI_dim_location.csv
+AAI_dim_product.csv
+AAI_Trx_small_sample.csv
