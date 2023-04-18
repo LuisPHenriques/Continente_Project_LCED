@@ -7,3 +7,5 @@ AAI_dim_product.csv
 AAI_Trx_small_sample.csv
 single_file.csv
 single_file.parquet
+*.parquet
+single_file.csv
