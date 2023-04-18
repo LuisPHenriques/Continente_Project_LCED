@@ -9,3 +9,4 @@ single_file.csv
 single_file.parquet
 *.parquet
 single_file.csv
+.DS_Store
