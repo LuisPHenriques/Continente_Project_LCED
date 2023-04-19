@@ -5,8 +5,9 @@ import matplotlib.ticker as ticker
 
 
 # Function to format y-axis labels in millions of euros
-def millions_formatter(x):
+def millions_formatter(x, pos):
     return '{}M €'.format(int(x/1000000))
+
 
 # Function to create a line plot for total gross and total net sales
 def line_plot(dataframe, title):
@@ -63,6 +64,44 @@ def line_plot(dataframe, title):
     # Add horizontal lines at the calculated y-axis positions
     plt.axhline(y=y40, color='black', zorder=5, linewidth=0.5)
     plt.axhline(y=y80, color='black', zorder=5, linewidth=0.5)
+
+    # Remove the top and right spines of the plot
+    sns.despine()
+
+    # Display the plot
+    plt.show()
+    
+    return None
+
+
+def bar_plot(dataframe, title):
+    # Set the plot style and background color
+    sns.set_style("ticks", {"axes.facecolor": "#fcf2f2"})
+
+    # Create a new figure with a specific size
+    plt.figure(figsize=(12, 8))
+    
+    # Get the first column name of the dataframe, that being the category
+    columns = dataframe.columns.to_list()
+    category = columns[0]
+    numeric = columns[1]
+
+    # Create bars
+    sns.barplot(x=category, y=numeric, data=dataframe, zorder=10, color='#de1c26')
+
+    # Remove x and y-axis labels
+    plt.xlabel('')
+    plt.ylabel('')
+
+    # Add a title with a custom font size
+    plt.title(title, fontsize=18)
+
+    # Remove the gridlines
+    plt.grid(False)
+
+    # Set custom font sizes for x and y-axis tick labels
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=12)
 
     # Remove the top and right spines of the plot
     sns.despine()
