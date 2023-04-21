@@ -10,3 +10,4 @@ single_file.parquet
 *.parquet
 single_file.csv
 .DS_Store
+__pycache__
