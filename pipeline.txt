@@ -53,7 +53,7 @@ Training pipeline guideline:
 
 - 2nd Part - 
 Apply feature selection before tensor flow and compare the results.
-	Filter methods: Correlations
+	Filter methods: Correlations, VIF
 
 - Normalization: min-max normalization vs standardization (normal distribution approach)
 - Log transformation
