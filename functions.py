@@ -201,17 +201,15 @@ def create_aggregations(df_transactions, df_ml, interval, feature, f_type, avg):
 
 def compute_target(df_ml):
     # create a new column 'BOUGHT_SUBCAT' that indicates if a customer bought a subcategory in a given month
-    df_ml['BOUGHT_SUBCAT'] = (df_ml['CUSTSUBCAT_NUM_TRANSACTIONS_MONTH'] > 0).astype(int)
+    df_ml['TARGET'] = (df_ml['CUSTSUBCAT_NUM_TRANSACTIONS_30_DAYS'] > 0).astype(int)
     
     # group the dataframe by customer_id and category_id
     grouped = df_ml.groupby(['CUSTOMER_ACCOUNT_NR_MASK', 'SUBCAT_CD_EXT'])
 
     # create a new column 'PREV_BOUGHT_SUBCAT' that has the value of 'BOUGHT_SUBCAT' shifted by one month
-    df_ml['TARGET'] = grouped['BOUGHT_SUBCAT'].shift(-1).fillna(2)
+    df_ml['TARGET'] = grouped['TARGET'].shift(-1).fillna(2)
     df_ml['TARGET'] = df_ml['TARGET'].astype(int)
     df_ml['TARGET'] = df_ml['TARGET'].replace(2, None)
-
-    df_ml = df_ml.drop(columns=['BOUGHT_SUBCAT'])
     
     return df_ml
 
